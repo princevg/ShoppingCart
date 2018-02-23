@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
@@ -22,29 +23,30 @@ import {
   MatCheckboxModule,
   MatTableModule
 } from '@angular/material';
+import { PowerHeaderComponent } from './power-header/power-header.component';
 const appRoutes: Routes = [
   {
-    path: 'books',
+    path: 'items',
     component: BookComponent,
-    data: { title: 'Book List' }
+    data: { title: 'Item List' }
   },
   {
-    path: 'book-details/:id',
+    path: 'item-details/:id',
     component: BookDetailComponent,
-    data: { title: 'Book Details' }
+    data: { title: 'Item Details' }
   },
   {
-    path: 'book-create',
+    path: 'item-create',
     component: BookCreateComponent,
-    data: { title: 'Create Book' }
+    data: { title: 'Create Item' }
   },
   {
-    path: 'book-edit/:id',
+    path: 'item-edit/:id',
     component: BookEditComponent,
-    data: { title: 'Edit Book' }
+    data: { title: 'Edit Item' }
   },
   { path: '',
-    redirectTo: '/books',
+    redirectTo: '/items',
     pathMatch: 'full'
   }
 ];
@@ -55,16 +57,17 @@ const appRoutes: Routes = [
     BookComponent,
     BookDetailComponent,
     BookCreateComponent,
-    BookEditComponent
+    BookEditComponent,
+    PowerHeaderComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-  	HttpClientModule,
-  	RouterModule.forRoot(
-	    appRoutes,
-	    { enableTracing: true } // <-- debugging purposes only
-	  ),
+    HttpClientModule,
+    RouterModule.forRoot(
+    appRoutes,
+      { enableTracing: true } // <-- debugging purposes only
+    ),
     MatButtonModule,
     MatMenuModule,
     MatToolbarModule,
@@ -76,7 +79,8 @@ const appRoutes: Routes = [
     MatInputModule,
     MatDialogModule,
     MatCheckboxModule,
-    MatTableModule
+    MatTableModule,
+    MDBBootstrapModule.forRoot()
   ],
   exports: [
     MatButtonModule,
@@ -92,6 +96,7 @@ const appRoutes: Routes = [
     MatCheckboxModule,
     MatTableModule
   ],
+  schemas: [ NO_ERRORS_SCHEMA ],
   providers: [],
   bootstrap: [AppComponent]
 })
