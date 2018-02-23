@@ -10,7 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class BookDetailComponent implements OnInit {
 
-  book = {};
+  Item = {};
 
   constructor(private router: Router, private route: ActivatedRoute, private http: HttpClient) { }
 
@@ -19,15 +19,15 @@ export class BookDetailComponent implements OnInit {
   }
 
   getBookDetail(id) {
-    this.http.get('/book/'+id).subscribe(data => {
-      this.book = data;
+    this.http.get('/item/' + id).subscribe(data => {
+      this.Item = data;
     });
   }
 
   deleteBook(id) {
-  this.http.delete('/book/'+id)
+  this.http.delete('/item/' + id)
     .subscribe(res => {
-        this.router.navigate(['/books']);
+        this.router.navigate(['/items']);
       }, (err) => {
         console.log(err);
       }

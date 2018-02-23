@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class BookEditComponent implements OnInit {
 
-  book = {};
+  Item = {};
 
   constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute) { }
 
@@ -19,16 +19,16 @@ export class BookEditComponent implements OnInit {
   }
 
   getBook(id) {
-    this.http.get('/book/'+id).subscribe(data => {
-      this.book = data;
+    this.http.get('/item/' + id).subscribe(data => {
+      this.Item = data;
     });
   }
 
   updateBook(id, data) {
-    this.http.put('/book/'+id, data)
+    this.http.put('/item/' + id, data)
       .subscribe(res => {
           let id = res['_id'];
-          this.router.navigate(['/book-details', id]);
+          this.router.navigate(['/item-details', id]);
         }, (err) => {
           console.log(err);
         }

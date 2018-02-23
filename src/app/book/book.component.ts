@@ -8,13 +8,13 @@ import { MatCard, MatCardHeader, MatCardTitle } from '@angular/material';
 })
 export class BookComponent implements OnInit {
 
-  books: any;
+  items: any;
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-	  this.http.get('/book').subscribe(data => {
-	    this.books = data;
-	  });
-	}
+    this.http.get('/item').subscribe(data => {
+    this.items = data;
+  });
+  }
 
 }
