@@ -2,7 +2,8 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var Item = require('../models/item.js');
-
+var nodemailer = require('nodemailer');
+console.log(nodemailer)
 /* GET ALL BOOKS */
 router.get('/', function(req, res, next) {
   Item.find(function (err, products) {
